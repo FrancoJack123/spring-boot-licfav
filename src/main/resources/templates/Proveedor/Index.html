@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>Proveedores</title>
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+    <div th:include="_Layout/_Layout.html::Sidebar"></div>
+    <div id="page-content-wrapper">
+        <div th:include="_Layout/_Layout.html::Navigation"></div>
+        <div class="container-fluid">
+            <!-- CONTENT -->
+            <h1 class="mt-4">Proveedores</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Proveedores</li>
+                </ol>
+            </nav>
+            <a class="btn btn-warning" th:href="@{/LIC-FAV/Proveedor/}">Agregar</a>
+            <table class="table table-striped table-bordered my-3">
+                <thead>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Correo Electronico</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="proveedor : ${proveedores}">
+                    <th scope="row" th:text="${proveedor.codPro}"></th>
+                    <td th:text="${proveedor.nomProv}"></td>
+                    <td th:text="${proveedor.telProv}"></td>
+                    <td th:text="${proveedor.emailProv}"></td>
+                    <td>
+                        <div class="d-flex justify-content-center align-items-center gap-3">
+                            <a class="btn btn-success" th:href="@{'/LIC-FAV/Proveedor/' + ${proveedor.codPro}}">Editar</a>
+                            <form onsubmit="return confirm('Deseas Eliminar??')" method="post">
+                                <input type="hidden" th:value="${proveedor.codPro}" name="codigo">
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- END CONTENT -->
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>

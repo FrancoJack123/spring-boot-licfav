@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <div th:fragment="Sidebar">
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">LIC-FAV</div>
+            <div class="list-group list-group-flush">
+                <a th:if="${session.usuario != null && session.usuario.rol.codRol == 1}" class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/LIC-FAV/Usuario}">Usuario</a>
+                <a th:if="${session.usuario != null && session.usuario.rol.codRol == 1}" class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/LIC-FAV/Proveedor}">Proveedor</a>
+                <a th:if="${session.usuario != null && session.usuario.rol.codRol == 1}" class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/LIC-FAV/Categoria}">Categoria</a>
+                <a th:if="${session.usuario != null && session.usuario.rol.codRol == 1}" class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/LIC-FAV/Producto}">Producto</a>
+                <a th:if="${session.usuario != null && session.usuario.rol.codRol == 2}" class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Tienda</a>
+                <a th:if="${session.usuario != null && session.usuario.rol.codRol == 2}" class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Carrito</a>
+                <a th:if="${session.usuario != null && session.usuario.rol.codRol == 2}" class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Ventas</a>
+            </div>
+        </div>
+    </div>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- Top navigation-->
+        <div th:fragment="Navigation">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary active" data-bs-toggle="button" id="sidebarToggle">Menu</button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active"><a class="nav-link" th:href="@{/Logout}">Cerrar Sesion</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Page content-->
+        <div class="container-fluid">
+            <h1 class="mt-4">Simple Sidebar</h1>
+            <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+            <p>
+                Make sure to keep all page content within the
+                <code>#page-content-wrapper</code>
+                . The top navbar is optional, and just for demonstration. Just create an element with the
+                <code>#sidebarToggle</code>
+                ID which will toggle the menu when clicked.
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

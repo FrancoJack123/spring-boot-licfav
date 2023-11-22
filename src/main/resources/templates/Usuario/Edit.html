@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>Usuarios</title>
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+    <div th:include="_Layout/_Layout.html::Sidebar"></div>
+    <div id="page-content-wrapper">
+        <div th:include="_Layout/_Layout.html::Navigation"></div>
+        <div class="container-fluid">
+            <!-- CONTENT -->
+            <h1 class="mt-4">Usuarios</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
+                </ol>
+            </nav>
+            <form th:action="@{/LIC-FAV/Usuario/}" th:object="${usuario}" method="post">
+                <input type="hidden" class="form-control" th:field="*{codUsua}" readonly>
+                <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input class="form-control" th:field="*{nomUsua}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Apellido</label>
+                    <input class="form-control" th:field="*{apeUsua}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Fecha Nacimiento</label>
+                    <input type="date" class="form-control" th:field="*{fnaUsua}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Rol</label>
+                    <select type="date" class="form-control" name="rol">
+                        <option th:each="rol : ${roles}" th:value="${rol.codRol}" th:text="${rol.descRol}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Usuario</label>
+                    <input class="form-control" th:field="*{userUsua}">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contraseña</label>
+                    <input type="text" class="form-control" th:field="*{claUsua}">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-danger" th:href="@{/LIC-FAV/Usuario}">Regresar</a>
+            </form>
+            <!-- END CONTENT -->
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>
