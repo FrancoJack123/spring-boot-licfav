@@ -25,9 +25,12 @@
                         <li class="list-group-item" th:text="${producto.categoria.descCat}">A second item</li>
                         <li class="list-group-item" th:text="${producto.proveedor.nomProv}">A third item</li>
                     </ul>
-                    <div th:if="${producto.estPro}" class="card-body d-flex gap-3">
-                        <input class="form-control" type="number" name="cant" value="1" required>
-                        <a href="#" class="btn btn-warning">Comprar</a>
+                    <div th:if="${producto.estPro}" class="card-body">
+                        <form th:action="@{/LIC-FAV/Tienda/AgregarCarrito}" class="d-flex gap-3" method="post">
+                            <input class="form-control" type="number" name="cantidad" value="1" required>
+                            <input type="hidden" name="productoId" th:value="${producto.codPro}">
+                            <button type="submit" class="btn btn-warning">Comprar</button>
+                        </form>
                     </div>
                     <div th:if="${!producto.estPro}" class="card-body">
                         <div class="alert alert-danger mb-0 p-2 text-center" role="alert">

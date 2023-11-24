@@ -27,6 +27,7 @@
                     <th scope="col">Proveedor</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
                     <th scope="col">Stock</th>
                     <th scope="col">Estado</th>
                     <th scope="col"></th>
@@ -41,6 +42,7 @@
                     <td th:text="${producto.proveedor.nomProv}"></td>
                     <td th:text="${producto.categoria.descCat}"></td>
                     <td th:text="${producto.descPro}"></td>
+                    <td th:text="${producto.prePro}"></td>
                     <td th:text="${producto.stckPro}"></td>
                     <td>
                         <span th:if="${producto.estPro == false}" class="badge text-bg-danger">No Activo</span>

@@ -41,10 +41,10 @@
                     <td>
                         <div class="d-flex justify-content-center align-items-center gap-3">
                             <a class="btn btn-success" th:href="@{'/LIC-FAV/Usuario/' + ${user.codUsua}}">Editar</a>
-                            <form onsubmit="return confirm('Deseas Eliminar??')" method="post">
+                            <!-- <form onsubmit="return confirm('Deseas Eliminar??')" method="post">
                                 <input type="hidden" th:value="${user.codUsua}" name="codigo">
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </form>
+                            </form> -->
                         </div>
                     </td>
                 </tr>

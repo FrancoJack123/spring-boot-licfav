@@ -20,6 +20,8 @@ public class Venta {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date fchVen;
 
+    private Double monto;
+
     @ManyToOne
     @JoinColumn(name = "codUsua", referencedColumnName = "codUsua")
     private Usuario usuario;
@@ -27,4 +29,13 @@ public class Venta {
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleVenta> detalleVentaList = new ArrayList<>();
 
+    public Venta() {
+    }
+
+    public Venta(Date fchVen, Double monto, Usuario usuario, List<DetalleVenta> detalleVentaList) {
+        this.fchVen = fchVen;
+        this.monto = monto;
+        this.usuario = usuario;
+        this.detalleVentaList = detalleVentaList;
+    }
 }

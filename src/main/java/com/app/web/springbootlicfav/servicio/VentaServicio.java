@@ -18,6 +18,10 @@ public class VentaServicio {
         return ventaRepositorio.findAll();
     }
 
+    public List<Venta> ListarVentasUsuario(Long usuarioID){
+        return ventaRepositorio.ListarVentasUsuario(usuarioID);
+    }
+
     public Venta BuscarVenta(Long codigo){
         return ventaRepositorio.findById(codigo).get();
     }

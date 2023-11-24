@@ -67,6 +67,7 @@ public class LoginController {
         HttpSession session
     ){
         session.removeAttribute("usuario");
+        session.removeAttribute("carrito");
         return "redirect:/";
     };
 }

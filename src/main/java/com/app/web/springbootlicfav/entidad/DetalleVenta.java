@@ -14,7 +14,7 @@ public class DetalleVenta {
     private Long codDetVenta;
     private Integer cantDetVenta;
     private Double preDetVenta;
-    private Integer montoDetVenta;
+    private Double montoDetVenta;
 
     @ManyToOne
     @JoinColumn(name = "producto", referencedColumnName = "codPro")
@@ -24,4 +24,15 @@ public class DetalleVenta {
     @JoinColumn(name = "venta", referencedColumnName = "codVen")
     @JsonBackReference
     private Venta venta;
+
+    public DetalleVenta(Integer cantDetVenta, Double preDetVenta, Double montoDetVenta, Producto producto) {
+        this.cantDetVenta = cantDetVenta;
+        this.preDetVenta = preDetVenta;
+        this.montoDetVenta = montoDetVenta;
+        this.producto = producto;
+    }
+
+    public DetalleVenta(){
+
+    }
 }

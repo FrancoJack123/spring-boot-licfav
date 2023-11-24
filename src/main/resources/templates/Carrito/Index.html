@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>Carrito Compra</title>
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+    <div th:include="_Layout/_Layout.html::Sidebar"></div>
+    <div id="page-content-wrapper">
+        <div th:include="_Layout/_Layout.html::Navigation"></div>
+        <div class="container-fluid">
+            <!-- CONTENT -->
+            <h1 class="mt-4">Carrito Compra</h1>
+            <a class="btn btn-primary" th:href="@{/LIC-FAV/Tienda}">Seguir Comprando</a>
+            <div th:if="${carrito.isEmpty()}" class="alert alert-danger text-center mt-3" role="alert">
+                Usted no tiene productos en su carrito
+            </div>
+            <div th:if="${!carrito.isEmpty()}">
+                <table class="table table-striped table-bordered my-3">
+                    <thead>
+                    <tr class="text-center">
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="detalle : ${carrito}" class="align-middle text-center">
+                        <td>
+                            <img class="rounded" th:src="@{'/assets/' + ${detalle.producto.foto}}" width="80px">
+                        </td>
+                        <td th:text="${detalle.producto.categoria.descCat}"></td>
+                        <td th:text="${detalle.producto.descPro}"></td>
+                        <td th:text="${detalle.preDetVenta}"></td>
+                        <td th:text="${detalle.cantDetVenta}"></td>
+                        <td th:text="${detalle.montoDetVenta}"></td>
+                        <td>
+                            <form th:action="@{/LIC-FAV/Carrito/Eliminar}" method="post">
+                                <input type="hidden" name="productoId" th:value="${detalle.producto.codPro}">
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <div class="d-flex justify-content-end gap-3 mb-3">
+                        <label for="inputEmail3" class="col-form-label">Monto Total</label>
+                        <div class="">
+                            <input type="email" class="form-control" id="inputEmail3" th:value="${montoTotal}" readonly>
+                        </div>
+                        <form th:action="@{/LIC-FAV/Carrito/Comprar}" method="post">
+                            <button class="btn btn-success">Finalizar Compra</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>
